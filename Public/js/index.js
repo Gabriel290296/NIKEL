@@ -44,6 +44,7 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
 
     const email = document.getElementById("email-create-input").value;
     const password = document.getElementById("password-create-input").value;
+    const passwordConfirm = document.getElementById("password-confirmation").value;
 
     if (email.length < 5) {
         alert("Preencha o campo com um e-mail válido.");
@@ -55,6 +56,13 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
         alert("Preencha a senha com no mínimo 4 dígitos.");
         return;
     }
+    if (password !== passwordConfirm) {
+        alert("Sua confimação está difergente da senha cadastrada.");
+        return;
+    }
+    
+    
+        
 
     saveAccount({
         login: email,

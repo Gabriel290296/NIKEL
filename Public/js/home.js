@@ -33,9 +33,9 @@ document.getElementById("transaction-form").addEventListener("submit", function 
     getCashOut();
     getTotal();
 
-    alert("Lançamento adicionado com sucesso.");
-});
+    alert("Lançamento adicionado com sucesso!");
 
+});
 
 checkLogged();
 
@@ -54,6 +54,7 @@ function checkLogged() {
     if (dataUser) {
         data = JSON.parse(dataUser);
     }
+    
 
     getCashIn();
     getCashOut();
@@ -156,14 +157,23 @@ function getCashOut() {
 function getTotal() {
     const transactions = data.transactions;
     let total = 0;
-
+  
     transactions.forEach((item) => {
         if (item.type === "1") {
             total += item.value;
         } else {
             total -= item.value;
+            
         }
+        
+        
     });
+
+    if (total < 0) {
+        alert ("Atenção. Seu saldo após cadastrar essa despesa será negativado, deseja continuar?");
+        
+    }
+    
 
     document.getElementById("total").innerHTML = `R$ ${total.toFixed(2)}`;
 
